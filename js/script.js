@@ -23,35 +23,38 @@ function rngUnique(num_array){
 }
 
 // DEFINISCO LA FUNZIONE CHE GENERI I 5 NUMERI CASUALI E LI METTA NELL'ARRAY
-function numbersGenerator(i){
+function numbersGenerator(){
 
     // Definisco l'array dove andranno inseriti i numeri
-    let numbers_array = [ ];
+    const numbers_array = [ ];
 
     // Creo il ciclo che generi i numeri casuali per 5 volte
-    for(i = 0; i < 5; i++){
+    for(let i = 0; i < 5; i++){
 
         numbers_array.push(rngUnique(numbers_array));
     }
 
-    console.log(numbers_array)
-
     return numbers_array;
 }
 
+// DEFINISCO LA FUNZIONE CHE METTA A VIDEO I NUMERI CASUALI
+function numberDisplay(){
 
-function numberDisplay(i){
+    // Richiamo la variabile per recupreare i numeri
+    let number = numbersGenerator();
     
+    // Faccio in modo di far visualizzare i numeri nella lista a schermo
     let numberList = document.getElementById('numbers');
     
-    let number = document.createElement('li');
+    let cell = document.createElement('li');
 
-    number.innerText = 'Numeri da memorizzare : ' + numbersGenerator(i).join(' ');
+    cell.innerText = 'Numeri da memorizzare : ' + number.join(' ');
     
-    numberList.appendChild(number);
+    numberList.appendChild(cell);
     
 }
 
+// DEFINISCO LA FUNZIONE CHE PERMETTA ALL'UTENTE DI INSERIRE I NUMERI
 function userNum(){
     
     const user_num_array = [ ];
@@ -64,14 +67,38 @@ function userNum(){
 
     }
 
-    console.log(user_num_array)
-
     return user_num_array
 }
 
-userNum()
 
+// DEFINISCO LA FUNZIONE CHE CONFRONTI I NUMERI CASUALI 
+// GENERATI E QUELLI SCRITTI DALL'UTENTE
+function compareNumbers(arr1, arr2){
+    
+    const correctNum = [ ];
+
+    for(let i = 0; i < 5; i++){
+        if(arr1[i] === arr2[i]){
+            
+            correctNum.push(arr1[i])
+        }
+    }
+
+    return correctNum;
+}
 
 numberDisplay();
+
+// DICHIARO LE 2 VARIABILI DEI 2 RISPETTIVI ARRAY
+let computerNumArray = numbersGenerator();
+console.log(computerNumArray);
+
+let userNumArray = userNum();
+console.log(userNumArray);
+
+compareNumbers(computerNumArray, userNumArray);
+console.log(compareNumbers(computerNumArray, userNumArray));
+
+
 
 
