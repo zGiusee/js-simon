@@ -52,6 +52,25 @@ function numberDisplay(i){
     
 }
 
+function userNum(){
+    
+    const user_num_array = [ ];
+    
+    while(user_num_array.length < 5){
+
+        let userNum = parseInt(prompt('Inserisci i numeri'));
+        
+        user_num_array.push(userNum)
+
+    }
+
+    console.log(user_num_array)
+
+    return user_num_array
+}
+
+userNum()
+
 
 numberDisplay();
 
