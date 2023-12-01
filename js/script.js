@@ -77,10 +77,7 @@ function userNum() {
             user_num_array.push(userNum);
         }
 
-        console.log(computerNumbers);
-        console.log(score)
-        console.log(user_num_array)
-
+        console.log(`Punti totalizzati: ${score}`)
     }
 
     return user_num_array
@@ -89,7 +86,7 @@ function userNum() {
 // DEFIINSCO LA COSTANTE DEI NUMERI GENERATI DAL COMPUTER
 const computerNumbers = numberDisplay();
 
-
+// Imposto il timer per l'user prompt
 setTimeout(userNum, 12000)
 
 
