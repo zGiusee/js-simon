@@ -1,3 +1,4 @@
+// DEFINISCO LA FUNZIONE CHE GENERI I NUMERI RANDOMICI NON UGUALI TRA LORO
 function rngUnique(num_array){
 
     // Creo la flag
@@ -20,3 +21,38 @@ function rngUnique(num_array){
     return random_num;
 
 }
+
+// DEFINISCO LA FUNZIONE CHE GENERI I 5 NUMERI CASUALI E LI METTA NELL'ARRAY
+function numbersGenerator(i){
+
+    // Definisco l'array dove andranno inseriti i numeri
+    let numbers_array = [ ];
+
+    // Creo il ciclo che generi i numeri casuali per 5 volte
+    for(i = 0; i < 5; i++){
+
+        numbers_array.push(rngUnique(numbers_array));
+    }
+
+    console.log(numbers_array)
+
+    return numbers_array;
+}
+
+
+function numberDisplay(i){
+    
+    let numberList = document.getElementById('numbers');
+    
+    let number = document.createElement('li');
+
+    number.innerText = 'Numeri da memorizzare : ' + numbersGenerator(i).join(' ');
+    
+    numberList.appendChild(number);
+    
+}
+
+
+numberDisplay();
+
+
