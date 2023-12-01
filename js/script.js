@@ -77,11 +77,9 @@ function compareNumbers(arr1, arr2){
     
     const correctNum = [ ];
 
-    for(let i = 0; i < 5; i++){
-        if(arr1[i] === arr2[i]){
-            
-            correctNum.push(arr1[i])
-        }
+    if(!correctNum.includes(arr1, arr2)){
+        
+        correctNum.push(arr1)
     }
 
     return correctNum;
