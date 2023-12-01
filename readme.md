@@ -9,3 +9,10 @@ Consigli del giorno: <br>
 * Pensate prima in italiano. <br>
 * Dividete in piccoli problemi la consegna. <br>
 * Individuate gli elementi di cui avete bisogno per realizzare il programma <br>
+
+DIVISIONE IN PROBLEMI E SOTTO PROBLEMI <br>
+- 1 Definisco che la funzione che crei i 5 numeri casuali; 
+- 2 Creo un bottone e collego la funzione dei numeri;
+- 3 Definisco il timer dei 30 secondi ai numeri;
+- 4 Faccio inserire attraverso i prompt i numeri anche all'utente;
+- 5 eseguo il confronto dei numeri e dichiaro il risultato;
