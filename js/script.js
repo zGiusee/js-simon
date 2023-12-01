@@ -33,7 +33,7 @@ function numbersGenerator(){
 
         numbers_array.push(rngUnique(numbers_array));
     }
-
+    
     return numbers_array;
 }
 
@@ -51,51 +51,46 @@ function numberDisplay(){
     cell.innerText = 'Numeri da memorizzare : ' + number.join(' ');
     
     numberList.appendChild(cell);
+
+    // Imposto il timer per ffar si che i numeri spariscano
+    setTimeout(function(){
+        cell.innerText = ' ';
+    },10000)
+
+    return number;
     
 }
 
 // DEFINISCO LA FUNZIONE CHE PERMETTA ALL'UTENTE DI INSERIRE I NUMERI
 function userNum(){
     
+    // Creo la variabile dello score
+    let score = 0;
     const user_num_array = [ ];
     
-    while(user_num_array.length < 5){
+    for(let i = 0; i < 5; i++){
 
         let userNum = parseInt(prompt('Inserisci i numeri'));
         
-        user_num_array.push(userNum)
+        if(computerNumbers.includes(userNum)){
+            score++;
+            user_num_array.push(userNum);
+        }
+
+        console.log(computerNumbers);
+        console.log(score)
+        console.log(user_num_array)
 
     }
 
     return user_num_array
 }
 
+// DEFIINSCO LA COSTANTE DEI NUMERI GENERATI DAL COMPUTER
+const computerNumbers = numberDisplay();
 
-// DEFINISCO LA FUNZIONE CHE CONFRONTI I NUMERI CASUALI 
-// GENERATI E QUELLI SCRITTI DALL'UTENTE
-function compareNumbers(arr1, arr2){
-    
-    const correctNum = [ ];
 
-    if(!correctNum.includes(arr1, arr2)){
-        
-        correctNum.push(arr1)
-    }
-
-    return correctNum;
-}
-
-numberDisplay();
-
-// DICHIARO LE 2 VARIABILI DEI 2 RISPETTIVI ARRAY
-let computerNumArray = numbersGenerator();
-console.log(computerNumArray);
-
-let userNumArray = userNum();
-console.log(userNumArray);
-
-compareNumbers(computerNumArray, userNumArray);
-console.log(compareNumbers(computerNumArray, userNumArray));
+setTimeout(userNum ,12000)
 
 
 
