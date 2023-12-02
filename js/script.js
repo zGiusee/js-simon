@@ -55,7 +55,12 @@ function numberDisplay() {
     // Imposto il timer per ffar si che i numeri spariscano
     setTimeout(function () {
         cell.innerText = ' ';
-    }, 10000)
+    }, 4000)
+
+    // Aggiungo nuovamente al dom i numeri del computer dopo l'inserimento dell'utente
+    setTimeout(function () {
+        cell.innerText = 'Numeri da memorizzare erano : ' + number.join(', ');
+    }, 6000)
 
     return number;
 
@@ -64,30 +69,48 @@ function numberDisplay() {
 // DEFINISCO LA FUNZIONE CHE PERMETTA ALL'UTENTE DI INSERIRE I NUMERI
 function userNum() {
 
+    // Creo la variabile di visualizzazione dei messaggi che ha inserito l'utente
+    let userNumDisplay = document.getElementById('userNumbers');
+
+    // Creo due variabili di messaggio 1'per le risposte giuse e la 2' per quelle sbagliate
+    let guessedNumberDisplay = document.getElementById('guessed');
+    let wrongNumberDisplay = document.getElementById('wrong');
+
     // Creo la variabile dello score
     let score = 0;
-    const user_num_array = [];
+
+    // Creo l'array dei numeri corretti
+    const correct_user_num_array = [];
+
+    // Creo l'array dei numeri inseriti dall'utente (in questo caso mi servira solo per farli visualizzare nel dom)
+    const userInputNumbers= []
 
     for (let i = 0; i < 5; i++) {
 
         let userNum = parseInt(prompt('Inserisci i numeri'));
+        userInputNumbers.push(userNum)
 
         if (computerNumbers.includes(userNum)) {
             score++;
-            user_num_array.push(userNum);
+
+            guessedNumberDisplay.innerText = 'Punti totalizzati : ' + score;
+            correct_user_num_array.push(userNum);
+        }
+        else {
+            wrongNumberDisplay.innerText = 'Hai sbagliato un totale di ' + (computerNumbers.length - score) + ' numeri';
         }
 
-        console.log(`Punti totalizzati: ${score}`)
+        userNumDisplay.innerText = 'I numeri da te inseriti sono : ' + userInputNumbers.join(', ');
     }
 
-    return user_num_array
+    return correct_user_num_array
 }
 
 // DEFIINSCO LA COSTANTE DEI NUMERI GENERATI DAL COMPUTER
 const computerNumbers = numberDisplay();
 
 // Imposto il timer per l'user prompt
-setTimeout(userNum, 12000)
+setTimeout(userNum, 6000)
 
 
 
