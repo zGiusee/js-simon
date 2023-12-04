@@ -52,7 +52,7 @@ function numberDisplay() {
 
     numberList.appendChild(cell);
 
-    // Imposto il timer per ffar si che i numeri spariscano
+    // Imposto il timer per far si che i numeri spariscano
     setTimeout(function () {
         cell.innerText = ' ';
     }, 4000)
@@ -90,15 +90,23 @@ function userNum() {
         let userNum = parseInt(prompt('Inserisci i numeri'));
         userInputNumbers.push(userNum)
 
-        if (computerNumbers.includes(userNum)) {
+        if(correct_user_num_array.includes(userNum)){
+            
+            // Aggiungo una varabile per i numeri inseriti 2 volte in modo che non conti sull'punteggio
+            console.log('hai inserito los tesso numero 2 volte')
+            
+        }
+        else if(computerNumbers.includes(userNum)) {
             score++;
 
             guessedNumberDisplay.innerText = 'Punti totalizzati : ' + score;
             correct_user_num_array.push(userNum);
         }
-        else {
+        else{
             wrongNumberDisplay.innerText = 'Hai sbagliato un totale di ' + (computerNumbers.length - score) + ' numeri';
         }
+        
+
 
         userNumDisplay.innerText = 'I numeri da te inseriti sono : ' + userInputNumbers.join(', ');
     }
